@@ -1,0 +1,34 @@
+show databases
+show dbs
+show collection
+
+use test
+db.users.help()
+
+<---- C- create - insert ---->
+
+db.users.insert({last_name:"Pradhan",age:22})
+db.users.insertMany({last_name:"Pradhan", first_name:"Sachidanand",age:22,gender:"Male"})
+
+<--- R- Read - Find ---->
+
+db.users.find()
+db.users.find().pretty()
+db.users.findOne()
+db.users.find({gender:"Male"})
+db.users.find({gender:"Male"}).count()
+db.users.find({gender:"Male"}).pretty()
+db.user.findOne({"_id" : ObjectId("619b7279ec203a04936457b5")})
+
+<---- U - Update ---->
+db.users.update({"_id" : ObjectId("619b7279ec203a04936457b5")},{last_name:"Pradhan"})
+db.users.update({"_id" : ObjectId("619b7279ec203a04936457b5")},{$set:{first_name:"sachida",last_name:"Pradhan"}})
+db.users.update({gender:"Male"},{$set:{gender:"MaleMale"}})
+d.users.find({gender:"MaleMale"}).pretty()
+
+<---- D- Delete - Remove - DeleteMany --->
+
+db.users.remove({"_id" : ObjectId("619b7279ec203a04936457b5")})
+db.users.remove({gender:"MaleMale"})
+db.users.remove({gender:"Female"},1)
+db.users.deleteMany({gender:"Female"})
